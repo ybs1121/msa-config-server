@@ -3,7 +3,12 @@ server:
 spring:
   application:
     name: config-service
-#  profiles:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+  #  profiles:
 #    active: native
   cloud:
     config:
@@ -13,5 +18,12 @@ spring:
         git:
 #          uri: file:///C:/Users/YBS/Desktop/SpringStudy/servlet/applicaltion-yml-repo/
           uri: https://github.com/ybs1121/msa-application-yml
+          default-label: master
+#          password:
 #          username: [my username]
 #          password: [my password]
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,busrefresh
